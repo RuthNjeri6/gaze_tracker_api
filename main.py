@@ -200,5 +200,5 @@ def save_data(landmarks, labels):
         # if async_labels.successful:
         #     os.remove('./saved_data/' + labels_file)
 
-if __name__ == '__main__':
-    uvicorn.run(app, host='127.0.0.1', port=4000, debug=True)
+# if __name__ == '__main__':
+#     uvicorn.run(app, host='127.0.0.1', port=4000, debug=True)
