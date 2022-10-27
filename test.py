@@ -2,5 +2,5 @@ from fastapi import FastAPI
 app = FastAPI()
 
 @app.get("/")
-def hello():
-    return {"message":"Hello TutLinks.com"}
+def index():
+    return {"message":"This is the homepage of the API"}
