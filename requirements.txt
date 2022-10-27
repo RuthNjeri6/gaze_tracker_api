@@ -1,0 +1,11 @@
+opencv-python==4.6.0.66
+dlib==19.24.0
+imutils==0.5.4
+numpy
+kivy_examples
+kivy
+python-dotenv==0.21.0
+boto3==1.25.1
+fastapi
+uvicorn===0.18.3
+pydantic
