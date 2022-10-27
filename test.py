@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+import numpy as np
 
 class Predictor(BaseModel):
     frame: list
@@ -12,4 +13,6 @@ def index():
 
 @app.post("/predict")
 def predict(data: Predictor):
-    return {"message": data}
+    data = data.dict()
+    frame = np.asarray(data['frame'], dtype="uint8")
+    return {"message": frame}
