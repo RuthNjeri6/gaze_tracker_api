@@ -9,3 +9,7 @@ app = FastAPI()
 @app.get("/")
 def index():
     return {"message":"This is the homepage of the API"}
+
+@app.post("/predict")
+def predict(data: Predictor):
+    return {"message": data}
