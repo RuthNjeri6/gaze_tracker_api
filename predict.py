@@ -9,7 +9,7 @@ import cv2
 import dlib
 from imutils import face_utils
 
-predictor = dlib.shape_predictor("api/shape_predictor_68_face_landmarks.dat")
+predictor = dlib.shape_predictor("./shape_predictor_68_face_landmarks.dat")
 detector = dlib.get_frontal_face_detector()
 
 BLOWUP_FACTOR = 1 # Resizes image before doing the algorithm. Changing to 2 makes things really slow. So nevermind on this.
