@@ -1,4 +1,9 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
+
+class Predictor(BaseModel):
+    frame: list
+
 app = FastAPI()
 
 @app.get("/")
