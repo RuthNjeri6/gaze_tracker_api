@@ -32,8 +32,8 @@ def save_data(landmarks, labels):
     landmarks_file = save_time + '_landmarks.txt'
     labels_file = save_time + '_labels.txt'
     try:
-        np.savetxt('./saved_data' + landmarks_file, landmarks, fmt='%i', delimiter =',')
-        np.savetxt('./saved_data' + labels_file, labels, fmt='%i', delimiter =',')
+        np.savetxt('./saved_data/' + landmarks_file, landmarks, fmt='%i', delimiter =',')
+        np.savetxt('./saved_data/' + labels_file, labels, fmt='%i', delimiter =',')
     except Exception as err:
         print(err)
     else:
