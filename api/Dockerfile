@@ -1,13 +1,12 @@
 FROM python:3.10.3-slim-bullseye
-
 RUN apt-get -y update
 RUN apt-get install -y --fix-missing \
-    build-essential \
     cmake \
     gfortran \
     git \
     wget \
     curl \
+    build-essential \
     graphicsmagick \
     libgraphicsmagick1-dev \
     libatlas-base-dev \
@@ -23,17 +22,14 @@ RUN apt-get install -y --fix-missing \
     software-properties-common \
     zip \
     && apt-get clean && rm -rf /tmp/* /var/tmp/*
-
 RUN cd ~ && \
     mkdir -p dlib && \
     git clone -b 'v19.9' --single-branch https://github.com/davisking/dlib.git dlib/ && \
     cd  dlib/ && \
     python3 setup.py install --yes USE_AVX_INSTRUCTIONS
-
 COPY ./requirements.txt ./api/requirements.txt
 RUN pip3 install --upgrade pip && pip3 install --no-cache-dir -r /api/requirements.txt  --upgrade
 WORKDIR /api
 ADD . /api
-
 EXPOSE 8000
-ENTRYPOINT ["uvicorn"]
+ENTRYPOINT ["cd api","uvicorn"]
