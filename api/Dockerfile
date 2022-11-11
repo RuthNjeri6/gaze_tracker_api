@@ -32,4 +32,4 @@ RUN pip3 install --upgrade pip && pip3 install --no-cache-dir -r /api/requiremen
 WORKDIR /api
 ADD . /api
 EXPOSE 8000
-ENTRYPOINT ["cd api","uvicorn"]
+ENTRYPOINT ["uvicorn"]
