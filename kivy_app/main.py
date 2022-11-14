@@ -17,16 +17,17 @@ class Touch(Image):
         global video_frame, collected_x, collected_y
         x = touch.x
         y = touch.y
-        prediction = self.sendFrame(video_frame)
-        print('Prediction...', prediction)
-        if prediction is not None and len(prediction) == 28:
-            with self.canvas:
-                Color(1,0,0)
-                d = 20
-                Ellipse(pos=(x -d/2, y - d/2), size=(d, d))
-            collected_x.append(prediction)
-            collected_y.append((x,y))
-        video_frame = []
+        if len(video_frame) != 0:
+            prediction = self.sendFrame(video_frame)
+            print('Prediction...', prediction)
+            if prediction is not None and len(prediction) == 28:
+                with self.canvas:
+                    Color(1,0,0)
+                    d = 20
+                    Ellipse(pos=(x -d/2, y - d/2), size=(d, d))
+                collected_x.append(prediction)
+                collected_y.append((x,y))
+            video_frame = []
 
     def sendFrame(self, img):
         url = os.environ.get('URL') + '/predict'
@@ -57,10 +58,12 @@ class MainApp(App):
             ret, image = cap.read()
             if not ret:
                 print("Frame cannot be read. Exiting...")
+                video_frame = []
                 break
-            video_frame = image.tolist()
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break 
+            else:
+                video_frame = image.tolist()
+                if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break 
         cv2.waitKey(0)
         cv2.destroyAllWindows()
     def on_stop(self):

@@ -1,10 +1,11 @@
 version: '3'
 services:
   api:
-    image: 715941344009.dkr.ecr.eu-central-1.amazonaws.com/gaze-tracker-api:latest
+    # image: 715941344009.dkr.ecr.eu-central-1.amazonaws.com/gaze-tracker-api:latest
+    image: gaze-tracker-api:latest
     container_name: gaze-tracker-api
     volumes:
-      - ./shape_predictor_68_face_landmarks.dat:/api/
+      - ./api/shape_predictor_68_face_landmarks.dat:/app/api/
     ports:
       - "8000:8000"
     command: ["main:app", "--host", "0.0.0.0"]

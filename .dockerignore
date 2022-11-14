@@ -1,3 +1,7 @@
 saved_data
 kivy_app
 __pycache__
+api-env
+README.md
+.github
+shape_predictor_68_face_landmarks.dat

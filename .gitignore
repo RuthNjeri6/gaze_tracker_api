@@ -3,3 +3,7 @@ saved_data
 api-env
 __pycache__
 shape_predictor_68_face_landmarks.dat
+buildozer.spec
+main_window.py
+my.kv
+.DS_Store
