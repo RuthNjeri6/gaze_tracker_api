@@ -8,8 +8,14 @@ import numpy as np
 import cv2
 import dlib
 from imutils import face_utils
+from dotenv import load_dotenv
+import os
 
-predictor = dlib.shape_predictor("./shape_predictor_68_face_landmarks.dat")
+load_dotenv()
+
+model_path = os.environ.get('MODEL_PATH')
+
+predictor = dlib.shape_predictor(model_path)
 detector = dlib.get_frontal_face_detector()
 
 BLOWUP_FACTOR = 1 # Resizes image before doing the algorithm. Changing to 2 makes things really slow. So nevermind on this.
