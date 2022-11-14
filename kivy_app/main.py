@@ -30,7 +30,8 @@ class Touch(Image):
             video_frame = []
 
     def sendFrame(self, img):
-        url = os.environ.get('URL') + '/predict'
+        url = "https://metrica.vitafluence.com/predict"
+        # url = os.environ.get('URL') + '/predict'
         payload = json.dumps({
                     "frame": img,
         })
@@ -74,7 +75,8 @@ class MainApp(App):
             self.pool.terminate()
 
     def saveData(self):
-        url = os.environ.get('URL') + '/save'
+        url = "https://metrica.vitafluence.com/save"
+        # url = os.environ.get('URL') + '/save'
         payload = json.dumps({
                     "landmarks": collected_x,
                     "labels": collected_y
